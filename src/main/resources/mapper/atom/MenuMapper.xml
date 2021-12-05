@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blue.atom.mapper.MenuMapper">
+
+    <!--根据用户id查询菜单列表-->
+    <select id="selectByUserId" resultType="com.blue.atom.entity.Menu">
+        SELECT
+            DISTINCT m.*
+        FROM
+            role_menu rm,
+            (SELECT role_id FROM user_role WHERE user_id = #{userId}
+             union
+             SELECT dr.role_id FROM user_dept ud, dept_role dr WHERE ud.dept_id = dr.dept_id AND ud.user_id = #{userId}
+            ) t,
+            menu m
+        WHERE
+            rm.role_id = t.role_id AND rm.menu_id = m.id
+    </select>
+
+    <!--根据菜单id查询子菜单-->
+    <select id="selectChildrenById" resultType="java.lang.Integer">
+        SELECT id FROM menu WHERE parent_id = #{id}
+    </select>
+</mapper>

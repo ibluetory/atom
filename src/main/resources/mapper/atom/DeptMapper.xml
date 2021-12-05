@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blue.atom.mapper.DeptMapper">
+
+    <!-- 设置子部门父节点id为空 -->
+    <update id="resetChildren">
+        UPDATE dept SET parent_id = null WHERE parent_id = #{id}
+    </update>
+</mapper>

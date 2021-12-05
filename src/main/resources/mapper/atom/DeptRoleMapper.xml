@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blue.atom.mapper.DeptRoleMapper">
+    <!--根据deptId删除-->
+    <delete id="deleteByDeptId">
+        DELETE FROM dept_role WHERE dept_id = #{deptId}
+    </delete>
+
+    <!--根据roleId删除-->
+    <delete id="deleteByRoleId">
+        DELETE FROM dept_role WHERE role_id = #{roleId}
+    </delete>
+
+    <!--根据userId查询角色列表-->
+    <select id="selectByDeptId" resultType="java.lang.Integer">
+        SELECT role_id FROM dept_role WHERE dept_id = #{deptId}
+    </select>
+</mapper>

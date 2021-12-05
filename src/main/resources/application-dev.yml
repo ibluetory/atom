@@ -1,0 +1,27 @@
+#配置数据源
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.1.1:3306/atom?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    username: root
+    password: root
+    druid:
+      initialSize: 3
+      minIdle: 10
+      maxActive: 200
+      maxWait: 5000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select CURRENT_DATE
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: false
+      maxPoolPreparedStatementPerConnectionSize: -1
+      filters: stat, wall
+      useGlobalDataSourceStat: false
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

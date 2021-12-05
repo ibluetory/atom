@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: atom
+  profiles:
+    active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 100MB
+
+#auth0-jwt
+jwt:
+  header: authorization
+  # 密钥
+  secret: blue@atom
+  # token过期时间/毫秒, 1小时 = 3600000 毫秒
+  expiration: 3600000
+  # 签发者
+  issuer: atom.com

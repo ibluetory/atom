@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blue.atom.mapper.UserDeptMapper">
+
+    <!--根据userId删除-->
+    <delete id="deleteByUserId">
+        DELETE FROM user_dept WHERE user_id = #{userId}
+    </delete>
+
+    <!--根据userId查询部门列表-->
+    <select id="selectByUserId" resultType="java.lang.Integer">
+        SELECT dept_id FROM user_dept WHERE user_id = #{userId}
+    </select>
+
+    <!--根据deptId删除-->
+    <delete id="deleteByDeptId">
+        DELETE FROM user_dept WHERE dept_id = #{deptId}
+    </delete>
+</mapper>
